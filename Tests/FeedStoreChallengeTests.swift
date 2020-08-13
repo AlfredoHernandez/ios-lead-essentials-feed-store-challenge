@@ -78,8 +78,7 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
     
     override func setUp() {
         super.setUp()
-        let storeURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("\(type(of: self)).store")
-        try? FileManager.default.removeItem(at: storeURL)
+        try? FileManager.default.removeItem(at: testSpecificStoreURL())
     }
 
 	func test_retrieve_deliversEmptyOnEmptyCache() {
@@ -157,9 +156,16 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	// - MARK: Helpers
 	
 	private func makeSUT() -> FeedStore {
-        let storeURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("\(type(of: self)).store")
-        return RealmFeedStore(storeURL: storeURL)
+        return RealmFeedStore(storeURL: testSpecificStoreURL())
 	}
+    
+    private func testSpecificStoreURL() -> URL {
+        cachesDirectory().appendingPathComponent("\(type(of: self)).realm")
+    }
+    
+    private func cachesDirectory() -> URL {
+        return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+    }
 }
 
 //
