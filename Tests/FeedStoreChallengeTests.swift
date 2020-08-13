@@ -38,12 +38,10 @@ class RealmFeedImage: Object {
 
 class RealmFeedStore: FeedStore {
     
-    let storeURL: URL
     let realm: Realm
     
-    init(storeURL: URL) {
-        self.storeURL = storeURL
-        realm = try! Realm(fileURL: storeURL)
+    init() {
+        realm = try! Realm()
     }
     
     func retrieve(completion: @escaping RetrievalCompletion) {
@@ -78,7 +76,7 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
     
     override func setUp() {
         super.setUp()
-        try? FileManager.default.removeItem(at: testSpecificStoreURL())
+        Realm.Configuration.defaultConfiguration.inMemoryIdentifier = self.name
     }
 
 	func test_retrieve_deliversEmptyOnEmptyCache() {
@@ -156,16 +154,8 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	// - MARK: Helpers
 	
 	private func makeSUT() -> FeedStore {
-        return RealmFeedStore(storeURL: testSpecificStoreURL())
+        return RealmFeedStore()
 	}
-    
-    private func testSpecificStoreURL() -> URL {
-        cachesDirectory().appendingPathComponent("\(type(of: self)).realm")
-    }
-    
-    private func cachesDirectory() -> URL {
-        return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-    }
 }
 
 //
