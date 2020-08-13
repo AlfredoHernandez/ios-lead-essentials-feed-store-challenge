@@ -16,6 +16,12 @@
 		08CE2BB22285BCE700183A1B /* XCTestCase+FailableDeleteFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE2BAD2285BCE700183A1B /* XCTestCase+FailableDeleteFeedStoreSpecs.swift */; };
 		08CE2BB32285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE2BAE2285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift */; };
 		08CE2BB52285BEF100183A1B /* FeedStoreChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE2BB42285BEF100183A1B /* FeedStoreChallengeTests.swift */; };
+		3864850B24E5A85200B66E0E /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3864850924E5A85200B66E0E /* Realm.framework */; };
+		3864850C24E5A85200B66E0E /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3864850924E5A85200B66E0E /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3864850D24E5A85300B66E0E /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3864850A24E5A85200B66E0E /* RealmSwift.framework */; };
+		3864850E24E5A85300B66E0E /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3864850A24E5A85200B66E0E /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		38E36C0624E5EBA400C5FF98 /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3864850924E5A85200B66E0E /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		38E36C0724E5EBA400C5FF98 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3864850A24E5A85200B66E0E /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +33,32 @@
 			remoteInfo = FeedStoreChallenge;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3864850F24E5A85300B66E0E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3864850E24E5A85300B66E0E /* RealmSwift.framework in Embed Frameworks */,
+				3864850C24E5A85200B66E0E /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38E36C0524E5EB9C00C5FF98 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				38E36C0624E5EBA400C5FF98 /* Realm.framework in CopyFiles */,
+				38E36C0724E5EBA400C5FF98 /* RealmSwift.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		08CE2B8B2285BBD100183A1B /* FeedStoreChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeedStoreChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +73,8 @@
 		08CE2BAD2285BCE700183A1B /* XCTestCase+FailableDeleteFeedStoreSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableDeleteFeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		08CE2BAE2285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableInsertFeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		08CE2BB42285BEF100183A1B /* FeedStoreChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreChallengeTests.swift; sourceTree = "<group>"; };
+		3864850924E5A85200B66E0E /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Dependencies/Realm.framework; sourceTree = "<group>"; };
+		3864850A24E5A85200B66E0E /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Dependencies/RealmSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3864850D24E5A85300B66E0E /* RealmSwift.framework in Frameworks */,
+				3864850B24E5A85200B66E0E /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +104,7 @@
 				08CE2B8D2285BBD100183A1B /* FeedStoreChallenge */,
 				08CE2B982285BBD100183A1B /* Tests */,
 				08CE2B8C2285BBD100183A1B /* Products */,
+				3864850824E5A85200B66E0E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +149,15 @@
 			path = FeedStoreSpecs;
 			sourceTree = "<group>";
 		};
+		3864850824E5A85200B66E0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3864850924E5A85200B66E0E /* Realm.framework */,
+				3864850A24E5A85200B66E0E /* RealmSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -133,6 +179,7 @@
 				08CE2B872285BBD100183A1B /* Sources */,
 				08CE2B882285BBD100183A1B /* Frameworks */,
 				08CE2B892285BBD100183A1B /* Resources */,
+				3864850F24E5A85300B66E0E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -150,6 +197,7 @@
 				08CE2B902285BBD100183A1B /* Sources */,
 				08CE2B912285BBD100183A1B /* Frameworks */,
 				08CE2B922285BBD100183A1B /* Resources */,
+				38E36C0524E5EB9C00C5FF98 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -384,6 +432,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Dependencies",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = FeedStoreChallenge/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -412,6 +464,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Dependencies",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = FeedStoreChallenge/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -435,6 +491,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = $PROJECT_DIR/Dependencies;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -455,6 +512,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = $PROJECT_DIR/Dependencies;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
