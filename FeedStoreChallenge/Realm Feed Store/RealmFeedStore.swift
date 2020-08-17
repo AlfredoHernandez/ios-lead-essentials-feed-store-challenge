@@ -35,7 +35,7 @@ public final class RealmFeedStore: FeedStore {
     
     public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
         do {
-            try realm.write {
+            try write { realm in
                 realm.deleteAll()
                 let realmFeed = List<RealmFeedImage>()
                 feed.map { RealmFeedImage(id: $0.id.uuidString, desc: $0.description, location: $0.location, url: $0.url.absoluteString) }.forEach {
@@ -52,12 +52,19 @@ public final class RealmFeedStore: FeedStore {
     
     public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
         do {
-            try realm.write {
+            try write { realm in
                 realm.deleteAll()
                 completion(nil)
             }
         }catch {
             completion(error)
+        }
+    }
+    
+    private func write(action: (Realm) -> Void) throws {
+        let realm = self.realm
+        try realm.write {
+            action(realm)
         }
     }
 }
