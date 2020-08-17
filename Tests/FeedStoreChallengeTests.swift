@@ -40,8 +40,8 @@ class RealmFeedStore: FeedStore {
     
     let realm: Realm
     
-    init() {
-        realm = try! Realm()
+    init() throws {
+        realm = try Realm()
     }
     
     func retrieve(completion: @escaping RetrievalCompletion) {
@@ -160,7 +160,7 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	// - MARK: Helpers
 	
 	private func makeSUT() -> FeedStore {
-        return RealmFeedStore()
+        return try! RealmFeedStore()
 	}
 }
 
