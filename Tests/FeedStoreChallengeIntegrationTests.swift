@@ -19,7 +19,7 @@ class FeedStoreChallengeIntegrationTests: XCTestCase {
         let cache = expectedCache()
         insert(feed: cache.feed, timestamp: cache.timestamp, on: sutToPerformSave)
         
-        expect(sutToPerformLoad, toLoad: cache.feed, timestamp: cache.timestamp)
+        expect(sutToPerformLoad, withResult: .found(feed: cache.feed, timestamp: cache.timestamp))
     }
 
     func test_noItemsFoundWhenDeleteItemsOnASeparatedInstance() {
@@ -44,21 +44,6 @@ class FeedStoreChallengeIntegrationTests: XCTestCase {
         let exp = expectation(description: "Wait for insertion.")
         sut.insert(feed, timestamp: timestamp) { error in
             XCTAssertNil(error, "Expected insert images. Got \(String(describing: error)) instead.")
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1.0)
-    }
-    
-    private func expect(_ sut: RealmFeedStore, toLoad expectedFeed: [LocalFeedImage], timestamp expectedTimestamp: Date) {
-        let exp = expectation(description: "Wait to retrieve")
-        sut.retrieve { result in
-            switch result {
-            case let .found(retrievedFeed, retrievedTimestamp):
-                XCTAssertEqual(retrievedFeed, expectedFeed)
-                XCTAssertEqual(retrievedTimestamp, expectedTimestamp)
-            default:
-                XCTFail("Expected to found feed. Got \(result) instead.")
-            }
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)
