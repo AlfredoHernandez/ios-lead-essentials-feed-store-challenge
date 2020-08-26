@@ -9,7 +9,7 @@ import FeedStoreChallenge
 class FeedStoreChallengeIntegrationTests: XCTestCase {
     override func setUp() {
         super.setUp()
-        Realm.Configuration.defaultConfiguration.inMemoryIdentifier = self.name
+        setupEmptyStoreState()
     }
     
     func test_retrieve_deliversItemsSavedOnASeparateInstance() {
@@ -38,6 +38,10 @@ class FeedStoreChallengeIntegrationTests: XCTestCase {
     
     private func makeSUT() -> RealmFeedStore {
         try! RealmFeedStore()
+    }
+    
+    private func setupEmptyStoreState() {
+        Realm.Configuration.defaultConfiguration.inMemoryIdentifier = self.name
     }
     
     private func insert(feed: [LocalFeedImage], timestamp: Date, on sut: RealmFeedStore) {
