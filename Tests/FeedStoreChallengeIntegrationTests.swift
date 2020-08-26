@@ -21,6 +21,18 @@ class FeedStoreChallengeIntegrationTests: XCTestCase {
         
         expect(sutToPerformLoad, toLoad: cache.feed, timestamp: cache.timestamp)
     }
+
+    func test_noItemsFoundWhenDeleteItemsOnASeparatedInstance() {
+        let sutToPerformSave = makeSUT()
+        let sutToPerformDelete = makeSUT()
+        let sutToPerformLoad = makeSUT()
+        let cache = expectedCache()
+        
+        insert(feed: cache.feed, timestamp: cache.timestamp, on: sutToPerformSave)
+        delete(on: sutToPerformDelete)
+        
+        expect(sutToPerformLoad, withResult: .empty)
+    }
     
     // MARK: - Helpers
     
@@ -47,6 +59,32 @@ class FeedStoreChallengeIntegrationTests: XCTestCase {
             default:
                 XCTFail("Expected to found feed. Got \(result) instead.")
             }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func expect(_ sut: RealmFeedStore, withResult expectedResult: RetrieveCachedFeedResult) {
+        let exp = expectation(description: "Wait to retrieve")
+        sut.retrieve { retrievedResult in
+            switch (retrievedResult, expectedResult) {
+            case let (.found(retrievedFeed, retrievedTimestamp), .found(expectedFeed, expectedTimestamp)):
+                XCTAssertEqual(retrievedFeed, expectedFeed)
+                XCTAssertEqual(retrievedTimestamp, expectedTimestamp)
+            case (.empty, .empty):
+                break
+            default:
+                XCTFail("Expected \(expectedResult) result, got \(retrievedResult) instead.")
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func delete(on sut: RealmFeedStore) {
+        let exp = expectation(description: "Wait for deletion.")
+        sut.deleteCachedFeed { error in
+            XCTAssertNil(error, "Expected delete cache. Got \(String(describing: error)) instead.")
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)
