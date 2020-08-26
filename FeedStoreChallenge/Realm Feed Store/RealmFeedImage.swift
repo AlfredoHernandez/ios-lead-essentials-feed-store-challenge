@@ -18,8 +18,4 @@ class RealmFeedImage: Object {
         self.location = location
         self.url = url
     }
-    
-    func toLocal() -> LocalFeedImage {
-        LocalFeedImage(id: UUID(uuidString: id)!, description: desc, location: location, url: URL(string: url)!)
-    }
 }
