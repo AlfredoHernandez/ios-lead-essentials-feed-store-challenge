@@ -25,6 +25,7 @@
 		3864850E24E5A85300B66E0E /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3864850A24E5A85200B66E0E /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38E36C0624E5EBA400C5FF98 /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3864850924E5A85200B66E0E /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38E36C0724E5EBA400C5FF98 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3864850A24E5A85200B66E0E /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		38F462FE24F6B96D00F65F36 /* FeedStoreChallengeIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F462FD24F6B96D00F65F36 /* FeedStoreChallengeIntegrationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		3821DE1A24EB1DC200284BC4 /* RealmFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFeedStore.swift; sourceTree = "<group>"; };
 		3864850924E5A85200B66E0E /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Dependencies/Realm.framework; sourceTree = "<group>"; };
 		3864850A24E5A85200B66E0E /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Dependencies/RealmSwift.framework; sourceTree = "<group>"; };
+		38F462FD24F6B96D00F65F36 /* FeedStoreChallengeIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreChallengeIntegrationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,9 +139,10 @@
 		08CE2B982285BBD100183A1B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				08CE2BA92285BCE700183A1B /* FeedStoreSpecs */,
-				08CE2BB42285BEF100183A1B /* FeedStoreChallengeTests.swift */,
 				08CE2B9B2285BBD100183A1B /* Info.plist */,
+				38F462FD24F6B96D00F65F36 /* FeedStoreChallengeIntegrationTests.swift */,
+				08CE2BB42285BEF100183A1B /* FeedStoreChallengeTests.swift */,
+				08CE2BA92285BCE700183A1B /* FeedStoreSpecs */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				08CE2BB22285BCE700183A1B /* XCTestCase+FailableDeleteFeedStoreSpecs.swift in Sources */,
 				08CE2BB02285BCE700183A1B /* FeedStoreSpecs.swift in Sources */,
 				08CE2BB12285BCE700183A1B /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift in Sources */,
+				38F462FE24F6B96D00F65F36 /* FeedStoreChallengeIntegrationTests.swift in Sources */,
 				08CE2BAF2285BCE700183A1B /* XCTestCase+FeedStoreSpecs.swift in Sources */,
 				08CE2BB32285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */,
 				08CE2BB52285BEF100183A1B /* FeedStoreChallengeTests.swift in Sources */,
