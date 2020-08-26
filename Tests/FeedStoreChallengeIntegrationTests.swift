@@ -12,6 +12,12 @@ class FeedStoreChallengeIntegrationTests: XCTestCase {
         setupEmptyStoreState()
     }
     
+    func test_retrive_deliversNoEmptyOnEmptyCache() {
+        let sut = makeSUT()
+        
+        expect(sut, withResult: .empty)
+    }
+    
     func test_retrieve_deliversItemsSavedOnASeparateInstance() {
         let sutToPerformSave = makeSUT()
         let sutToPerformLoad = makeSUT()
